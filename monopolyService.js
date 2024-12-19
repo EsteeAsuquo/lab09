@@ -122,7 +122,7 @@ function deletePlayer(req, res, next) {
 }
 
 function join(req, res, next){
-  db.many("SELECT gameID, playerID, player.ID, emailAddress FROM PlayerGame INNER JOIN Player ON playerID = Player.ID")
+  db.many("SELECT Player.name FROM Player JOIN PlayerGame ON Player.ID = PlayerGame.playerID JOIN Game ON PlayerGame.gameID = Game.ID WHERE Game.time = '2006-06-28 13:20:00")
   .then((data) =>{
     res.send(data);
   })
